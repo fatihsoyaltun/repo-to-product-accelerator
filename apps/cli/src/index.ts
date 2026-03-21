@@ -23,6 +23,12 @@ function runCommand(command: string, cwd: string): void {
   });
 }
 
+function runStep(step: number, totalSteps: number, name: string, command: string, cwd: string): void {
+  console.log(`[${step}/${totalSteps}] Running ${name}...`);
+  runCommand(command, cwd);
+  console.log(`✓ ${name} completed`);
+}
+
 const repoUrl = process.argv[2];
 
 if (!repoUrl) {
@@ -36,16 +42,23 @@ const repoRoot = path.resolve(currentDir, "../../..");
 
 const repoName = repoUrl.split("/").filter(Boolean).pop() ?? "unknown-repo";
 const repoSafeName = toSafeName(repoName);
+const totalSteps = 5;
 
 const fingerprintPath = path.join(repoRoot, "data/repo-fingerprints", `${repoSafeName}.json`);
 const ideasPath = path.join(repoRoot, "data/idea-templates", `${repoSafeName}.ideas.json`);
 
-runCommand(
+runStep(
+  1,
+  totalSteps,
+  "repo-analyzer",
   `pnpm exec tsx services/repo-analyzer/src/index.ts ${quote(repoUrl)}`,
   repoRoot
 );
 
-runCommand(
+runStep(
+  2,
+  totalSteps,
+  "idea-engine",
   `pnpm exec tsx services/idea-engine/src/index.ts ${quote(fingerprintPath)}`,
   repoRoot
 );
@@ -77,24 +90,33 @@ const scaffoldPlanPath = path.join(
   `${architectureSafeName}.scaffold-plan.json`
 );
 
-runCommand(
+runStep(
+  3,
+  totalSteps,
+  "architecture-engine",
   `pnpm exec tsx services/architecture-engine/src/index.ts ${quote(ideasPath)}`,
   repoRoot
 );
 
-runCommand(
+runStep(
+  4,
+  totalSteps,
+  "task-breakdown",
   `pnpm exec tsx services/task-breakdown/src/index.ts ${quote(architecturePath)}`,
   repoRoot
 );
 
-runCommand(
+runStep(
+  5,
+  totalSteps,
+  "scaffolder",
   `pnpm exec tsx services/scaffolder/src/index.ts ${quote(architecturePath)}`,
   repoRoot
 );
 
-console.log("Pipeline completed.");
-console.log(`Fingerprint: ${fingerprintPath}`);
-console.log(`Ideas: ${ideasPath}`);
-console.log(`Architecture: ${architecturePath}`);
-console.log(`Backlog: ${backlogPath}`);
-console.log(`Scaffold plan: ${scaffoldPlanPath}`);
+console.log("=== PIPELINE COMPLETE ===");
+console.log(`- fingerprint: ${fingerprintPath}`);
+console.log(`- ideas: ${ideasPath}`);
+console.log(`- architecture: ${architecturePath}`);
+console.log(`- backlog: ${backlogPath}`);
+console.log(`- scaffold plan: ${scaffoldPlanPath}`);
