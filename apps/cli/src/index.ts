@@ -30,9 +30,11 @@ function runStep(step: number, totalSteps: number, name: string, command: string
 }
 
 const repoUrl = process.argv[2];
+const flags = process.argv.slice(3);
+const shouldApply = flags.includes("--apply");
 
 if (!repoUrl) {
-  console.error("Usage: pnpm exec tsx apps/cli/src/index.ts <repo-url>");
+  console.error("Usage: pnpm exec tsx apps/cli/src/index.ts <repo-url> [--apply|--preview]");
   process.exit(1);
 }
 
@@ -110,7 +112,7 @@ runStep(
   5,
   totalSteps,
   "scaffolder",
-  `pnpm exec tsx services/scaffolder/src/index.ts ${quote(architecturePath)}`,
+  `pnpm exec tsx services/scaffolder/src/index.ts ${quote(architecturePath)}${shouldApply ? " --apply" : ""}`,
   repoRoot
 );
 
