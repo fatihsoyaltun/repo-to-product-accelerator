@@ -1,0 +1,18 @@
+{
+  "repoName": "next.js",
+  "repoUrl": "https://github.com/vercel/next.js",
+  "primaryLanguage": null,
+  "detectedFrameworks": [
+    "Next.js"
+  ],
+  "capabilities": [
+    "web-app",
+    "frontend-platform"
+  ],
+  "maturityScore": 35,
+  "notes": [
+    "initial heuristic fingerprint only",
+    "README parsing and language detection not implemented yet",
+    "repo name suggests Next.js ecosystem"
+  ]
+}

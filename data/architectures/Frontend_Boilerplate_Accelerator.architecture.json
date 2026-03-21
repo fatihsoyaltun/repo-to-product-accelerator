@@ -1,0 +1,33 @@
+{
+  "productTitle": "Frontend Boilerplate Accelerator",
+  "systemType": "developer-tooling platform",
+  "targetUser": "frontend developers",
+  "coreModules": [
+    "repo import",
+    "repo fingerprinting",
+    "capability tagging",
+    "template recommendation",
+    "starter scaffold generation"
+  ],
+  "recommendedApps": [
+    "apps/cli",
+    "apps/dashboard"
+  ],
+  "recommendedServices": [
+    "services/repo-analyzer",
+    "services/idea-engine",
+    "services/architecture-engine",
+    "services/scaffolder"
+  ],
+  "dataObjects": [
+    "RepoFingerprint",
+    "Idea",
+    "ArchitectureSpec",
+    "ScaffoldPlan"
+  ],
+  "deliveryNotes": [
+    "start with CLI-first workflow",
+    "dashboard should be read-only in MVP if needed",
+    "scaffold generation must stay narrow and template-based"
+  ]
+}

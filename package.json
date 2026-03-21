@@ -1,0 +1,12 @@
+{
+  "name": "repo-to-product-accelerator",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "repo-analyzer": "tsx services/repo-analyzer/src/index.ts",
+    "idea-engine": "tsx services/idea-engine/src/index.ts",
+    "architecture-engine": "tsx services/architecture-engine/src/index.ts",
+    "task-breakdown": "tsx services/task-breakdown/src/index.ts"
+  }
+}

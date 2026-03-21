@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Frontend Boilerplate Accelerator",
+    "problem": "Developers waste time setting up frontend stacks",
+    "targetUser": "frontend developers",
+    "score": 81,
+    "rationale": [
+      "strong fit with frontend-platform capability",
+      "narrower and more implementable MVP"
+    ]
+  },
+  {
+    "title": "AI-powered Website Generator",
+    "problem": "Users struggle to quickly build production-ready web apps",
+    "targetUser": "solo builders",
+    "score": 72,
+    "rationale": [
+      "matches web-app capability",
+      "broad market but competitive space"
+    ]
+  }
+]
