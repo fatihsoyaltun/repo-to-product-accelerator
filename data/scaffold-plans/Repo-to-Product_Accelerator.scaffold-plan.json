@@ -1,0 +1,22 @@
+{
+  "productTitle": "Repo-to-Product Accelerator",
+  "targetDirectories": [
+    "apps/cli",
+    "apps/dashboard"
+  ],
+  "targetFiles": [
+    "services/repo-analyzer/package.json",
+    "services/repo-analyzer/src/index.ts",
+    "services/idea-engine/package.json",
+    "services/idea-engine/src/index.ts",
+    "services/architecture-engine/package.json",
+    "services/architecture-engine/src/index.ts",
+    "services/task-breakdown/package.json",
+    "services/task-breakdown/src/index.ts",
+    "services/scaffolder/package.json",
+    "services/scaffolder/src/index.ts"
+  ],
+  "notes": [
+    "preview only, no files generated"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "productTitle": "Developer Workflow CLI",
+  "systemType": "developer-tooling cli",
+  "targetUser": "developers",
+  "coreModules": [
+    "repo analysis",
+    "workflow orchestration",
+    "command generation",
+    "pipeline execution"
+  ],
+  "recommendedApps": [
+    "apps/cli"
+  ],
+  "recommendedServices": [
+    "services/repo-analyzer",
+    "services/idea-engine",
+    "services/architecture-engine",
+    "services/task-breakdown"
+  ],
+  "dataObjects": [
+    "RepoFingerprint",
+    "Idea",
+    "ArchitectureSpec",
+    "Backlog"
+  ],
+  "deliveryNotes": [
+    "CLI-only MVP",
+    "fast execution over UI breadth"
+  ],
+  "capabilitySnapshot": [
+    "developer-tooling",
+    "command-line-interface"
+  ]
+}

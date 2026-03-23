@@ -1,0 +1,15 @@
+{
+  "productTitle": "Generic Dev Tooling Product",
+  "targetDirectories": [
+    "apps/cli"
+  ],
+  "targetFiles": [
+    "services/repo-analyzer/package.json",
+    "services/repo-analyzer/src/index.ts",
+    "services/idea-engine/package.json",
+    "services/idea-engine/src/index.ts"
+  ],
+  "notes": [
+    "preview only, no files generated"
+  ]
+}

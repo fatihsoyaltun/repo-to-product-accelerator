@@ -1,0 +1,26 @@
+{
+  "required": [
+    "templateId",
+    "appliesTo",
+    "targetType",
+    "targetPath",
+    "files"
+  ],
+  "properties": {
+    "templateId": { "type": "string" },
+    "appliesTo": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "targetType": {
+      "enum": ["app", "service"]
+    },
+    "targetPath": { "type": "string" },
+    "files": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

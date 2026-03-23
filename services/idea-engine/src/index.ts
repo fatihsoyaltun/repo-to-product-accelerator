@@ -51,6 +51,70 @@ function generateIdeas(capabilities: string[]): Idea[] {
     });
   }
 
+  if (
+    capabilities.includes("developer-tooling") &&
+    capabilities.includes("command-line-interface")
+  ) {
+    ideas.push({
+      title: "Developer Workflow CLI",
+      problem: "Developers lose time chaining repetitive repository and tooling workflows manually",
+      targetUser: "developers",
+      score: 78,
+      rationale: [
+        "strong fit with developer-tooling capability",
+        "CLI distribution makes MVP practical"
+      ]
+    });
+  }
+
+  if (
+    capabilities.includes("agent-orchestration") &&
+    capabilities.includes("automation")
+  ) {
+    ideas.push({
+      title: "Agent Task Composer",
+      problem: "Teams struggle to coordinate repeatable agent tasks safely across engineering workflows",
+      targetUser: "tech leads",
+      score: 76,
+      rationale: [
+        "fits agent-orchestration and automation signals",
+        "good internal tooling angle"
+      ]
+    });
+  }
+
+  if (
+    capabilities.includes("dashboard") &&
+    capabilities.includes("visualization")
+  ) {
+    ideas.push({
+      title: "Internal Analysis Console",
+      problem: "Teams lack a compact interface to inspect generated engineering insights and outputs",
+      targetUser: "internal product teams",
+      score: 64,
+      rationale: [
+        "matches dashboard and visualization signals",
+        "useful later, but weaker than CLI-first MVP"
+      ]
+    });
+  }
+
+  if (
+    capabilities.includes("developer-tooling") &&
+    capabilities.includes("agent-orchestration")
+  ) {
+    ideas.push({
+      title: "Repo-to-Product Accelerator",
+      problem: "Builders waste time turning promising repositories into concrete product directions, architectures, and execution plans",
+      targetUser: "solo builders",
+      score: 89,
+      rationale: [
+        "direct match for developer-tooling plus agent-orchestration",
+        "strong alignment with current monorepo purpose"
+      ]
+    });
+  }
+
   if (ideas.length === 0) {
     ideas.push({
       title: "Generic Dev Tooling Product",

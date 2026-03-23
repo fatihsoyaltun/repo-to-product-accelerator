@@ -1,0 +1,20 @@
+[
+  {
+    "templateId": "node-cli-basic",
+    "appliesTo": ["Developer Workflow CLI"],
+    "capabilities": [
+      "developer-tooling",
+      "command-line-interface"
+    ],
+    "priority": 100
+  },
+  {
+    "templateId": "dashboard-basic",
+    "appliesTo": ["Internal Analysis Console"],
+    "capabilities": [
+      "dashboard",
+      "visualization"
+    ],
+    "priority": 100
+  }
+]

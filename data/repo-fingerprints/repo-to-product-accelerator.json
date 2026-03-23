@@ -1,0 +1,20 @@
+{
+  "repoName": "repo-to-product-accelerator",
+  "repoUrl": "https://github.com/fatihsoyaltun/repo-to-product-accelerator",
+  "primaryLanguage": null,
+  "detectedFrameworks": [],
+  "capabilities": [
+    "developer-tooling",
+    "command-line-interface",
+    "agent-orchestration",
+    "automation",
+    "dashboard",
+    "visualization"
+  ],
+  "maturityScore": 35,
+  "notes": [
+    "initial heuristic fingerprint only",
+    "README parsing uses local file only",
+    "local README signals applied"
+  ]
+}

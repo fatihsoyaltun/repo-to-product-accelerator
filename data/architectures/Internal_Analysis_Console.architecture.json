@@ -1,0 +1,28 @@
+{
+  "productTitle": "Internal Analysis Console",
+  "systemType": "internal dashboard tool",
+  "targetUser": "internal product teams",
+  "coreModules": [
+    "analysis display",
+    "artifact inspection",
+    "result browsing"
+  ],
+  "recommendedApps": [
+    "apps/dashboard"
+  ],
+  "recommendedServices": [
+    "services/idea-engine",
+    "services/architecture-engine"
+  ],
+  "dataObjects": [
+    "Idea",
+    "ArchitectureSpec"
+  ],
+  "deliveryNotes": [
+    "dashboard-first exploration tool"
+  ],
+  "capabilitySnapshot": [
+    "dashboard",
+    "visualization"
+  ]
+}

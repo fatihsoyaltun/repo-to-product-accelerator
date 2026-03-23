@@ -1,0 +1,10 @@
+{
+  "templateId": "node-cli-basic",
+  "appliesTo": "Developer Workflow CLI",
+  "targetType": "app",
+  "targetPath": "apps/generated-cli",
+  "files": [
+    "package.json",
+    "index.js"
+  ]
+}

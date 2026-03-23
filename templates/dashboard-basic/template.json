@@ -1,0 +1,9 @@
+{
+  "templateId": "dashboard-basic",
+  "appliesTo": ["Internal Analysis Console"],
+  "targetType": "app",
+  "targetPath": "apps/generated-dashboard",
+  "files": [
+    "index.html"
+  ]
+}

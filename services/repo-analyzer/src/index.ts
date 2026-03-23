@@ -3,13 +3,22 @@ import path from "node:path";
 import { fingerprintRepo } from "./lib/fingerprint.js";
 
 const repoUrl = process.argv[2];
+const args = process.argv.slice(3);
+
+let localPath: string | undefined;
+
+for (let i = 0; i < args.length; i += 1) {
+  if (args[i] === "--local-path") {
+    localPath = args[i + 1];
+  }
+}
 
 if (!repoUrl) {
-  console.error("Usage: pnpm repo-analyzer <repo-url>");
+  console.error("Usage: pnpm repo-analyzer <repo-url> [--local-path <path>]");
   process.exit(1);
 }
 
-const fingerprint = fingerprintRepo(repoUrl);
+const fingerprint = fingerprintRepo(repoUrl, localPath);
 
 const outputDir = path.resolve("data/repo-fingerprints");
 fs.mkdirSync(outputDir, { recursive: true });

@@ -1,0 +1,23 @@
+{
+  "productTitle": "Generic Dev Tooling Product",
+  "systemType": "generic product system",
+  "targetUser": "developers",
+  "coreModules": [
+    "repo import",
+    "idea mapping"
+  ],
+  "recommendedApps": [
+    "apps/cli"
+  ],
+  "recommendedServices": [
+    "services/repo-analyzer",
+    "services/idea-engine"
+  ],
+  "dataObjects": [
+    "RepoFingerprint",
+    "Idea"
+  ],
+  "deliveryNotes": [
+    "fallback architecture only"
+  ]
+}

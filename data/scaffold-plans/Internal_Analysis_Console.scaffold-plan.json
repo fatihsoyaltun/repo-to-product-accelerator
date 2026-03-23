@@ -1,0 +1,15 @@
+{
+  "productTitle": "Internal Analysis Console",
+  "targetDirectories": [
+    "apps/dashboard"
+  ],
+  "targetFiles": [
+    "services/idea-engine/package.json",
+    "services/idea-engine/src/index.ts",
+    "services/architecture-engine/package.json",
+    "services/architecture-engine/src/index.ts"
+  ],
+  "notes": [
+    "preview only, no files generated"
+  ]
+}

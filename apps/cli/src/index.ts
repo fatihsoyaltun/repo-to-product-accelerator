@@ -31,10 +31,67 @@ function runStep(step: number, totalSteps: number, name: string, command: string
 
 const repoUrl = process.argv[2];
 const flags = process.argv.slice(3);
-const shouldApply = flags.includes("--apply");
+
+let shouldApply = false;
+let localPath: string | undefined;
+let ideaIndex = 0;
+
+for (let index = 0; index < flags.length; index += 1) {
+  const flag = flags[index];
+
+  if (flag === "--apply") {
+    shouldApply = true;
+    continue;
+  }
+
+  if (flag === "--preview") {
+    continue;
+  }
+
+  if (flag === "--local-path") {
+    const value = flags[index + 1];
+
+    if (!value) {
+      console.error("Missing value for --local-path");
+      console.error(
+        "Usage: pnpm exec tsx apps/cli/src/index.ts <repo-url> [--apply] [--preview] [--local-path <path>] [--idea-index <number>]"
+      );
+      process.exit(1);
+    }
+
+    localPath = value;
+    index += 1;
+    continue;
+  }
+
+  if (flag === "--idea-index") {
+    const value = flags[index + 1];
+
+    if (!value) {
+      console.error("Missing value for --idea-index");
+      console.error(
+        "Usage: pnpm exec tsx apps/cli/src/index.ts <repo-url> [--apply] [--preview] [--local-path <path>] [--idea-index <number>]"
+      );
+      process.exit(1);
+    }
+
+    const parsedIdeaIndex = Number(value);
+
+    if (!Number.isInteger(parsedIdeaIndex) || parsedIdeaIndex < 0) {
+      console.error(`Invalid idea index: ${value}`);
+      process.exit(1);
+    }
+
+    ideaIndex = parsedIdeaIndex;
+    index += 1;
+    continue;
+  }
+}
 
 if (!repoUrl) {
-  console.error("Usage: pnpm exec tsx apps/cli/src/index.ts <repo-url> [--apply|--preview]");
+  console.error(
+    "Usage: pnpm exec tsx apps/cli/src/index.ts <repo-url> [--apply] [--preview] [--local-path <path>] [--idea-index <number>]"
+  );
   process.exit(1);
 }
 
@@ -49,11 +106,15 @@ const totalSteps = 5;
 const fingerprintPath = path.join(repoRoot, "data/repo-fingerprints", `${repoSafeName}.json`);
 const ideasPath = path.join(repoRoot, "data/idea-templates", `${repoSafeName}.ideas.json`);
 
+const repoAnalyzerCommand = `pnpm exec tsx services/repo-analyzer/src/index.ts ${quote(repoUrl)}${
+  localPath ? ` --local-path ${quote(localPath)}` : ""
+}`;
+
 runStep(
   1,
   totalSteps,
   "repo-analyzer",
-  `pnpm exec tsx services/repo-analyzer/src/index.ts ${quote(repoUrl)}`,
+  repoAnalyzerCommand,
   repoRoot
 );
 
@@ -66,10 +127,14 @@ runStep(
 );
 
 const ideas: Idea[] = JSON.parse(fs.readFileSync(ideasPath, "utf-8"));
-const selectedIdea = ideas[0];
+const selectedIdea = ideas[ideaIndex];
 
 if (!selectedIdea) {
-  console.error("Idea engine did not produce any ideas.");
+  if (ideas.length === 0) {
+    console.error("Idea engine did not produce any ideas.");
+  } else {
+    console.error(`Invalid idea index: ${ideaIndex}`);
+  }
   process.exit(1);
 }
 
@@ -96,7 +161,7 @@ runStep(
   3,
   totalSteps,
   "architecture-engine",
-  `pnpm exec tsx services/architecture-engine/src/index.ts ${quote(ideasPath)}`,
+  `pnpm exec tsx services/architecture-engine/src/index.ts ${quote(ideasPath)} ${ideaIndex}`,
   repoRoot
 );
 

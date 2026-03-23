@@ -1,0 +1,38 @@
+{
+  "productTitle": "Repo-to-Product Accelerator",
+  "systemType": "developer-tooling platform",
+  "targetUser": "solo builders",
+  "coreModules": [
+    "repo ingestion",
+    "repo fingerprinting",
+    "capability tagging",
+    "idea mapping",
+    "architecture generation",
+    "backlog generation",
+    "scaffold planning"
+  ],
+  "recommendedApps": [
+    "apps/cli",
+    "apps/dashboard"
+  ],
+  "recommendedServices": [
+    "services/repo-analyzer",
+    "services/idea-engine",
+    "services/architecture-engine",
+    "services/task-breakdown",
+    "services/scaffolder"
+  ],
+  "dataObjects": [
+    "RepoFingerprint",
+    "Idea",
+    "ArchitectureSpec",
+    "Backlog",
+    "ScaffoldPlan"
+  ],
+  "deliveryNotes": [
+    "CLI-first execution",
+    "dashboard optional for MVP",
+    "scaffold must remain template-based",
+    "agent orchestration layer can be added later"
+  ]
+}
